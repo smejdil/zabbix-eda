@@ -1,0 +1,11 @@
+- name: Zabbix test rulebook
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: "::"  # Naslouchá na všech IPv6 adresách
+        port: 5001
+  rules:
+    - name: debug
+      condition: event.payload is defined
+      action:
+        debug:
