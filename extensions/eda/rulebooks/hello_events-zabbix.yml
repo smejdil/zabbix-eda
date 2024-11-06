@@ -11,4 +11,5 @@
       action:
         run_playbook:
           name: hello.yml
+          inventory: "localhost,"
 ...
