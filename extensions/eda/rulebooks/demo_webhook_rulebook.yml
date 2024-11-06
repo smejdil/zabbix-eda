@@ -13,8 +13,11 @@
   hosts: all
   sources:
     - ansible.eda.webhook:
+        host: "::"  # Naslouchá na všech IPv6 adresách
         port: "{{ port | default(5555) }}"
-        host: 0.0.0.0
+    - ansible.eda.webhook:
+        host: "0.0.0.0"  # Naslouchá na všech IPv4 adresách
+        port: "{{ port | default(5555) }}"
   rules:
     - name: Webhook rule
       condition: true

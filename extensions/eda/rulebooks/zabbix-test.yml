@@ -2,7 +2,10 @@
   hosts: all
   sources:
     - ansible.eda.webhook:
-        host: 0.0.0.0
+        host: "::"  # Naslouchá na všech IPv6 adresách
+        port: 5001
+    - ansible.eda.webhook:
+        host: "0.0.0.0"  # Naslouchá na všech IPv4 adresách
         port: 5001
   rules:
     - name: debug
