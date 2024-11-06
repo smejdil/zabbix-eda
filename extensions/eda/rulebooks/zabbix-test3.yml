@@ -4,7 +4,7 @@
   sources:
     - ansible.eda.webhook:
         host: 0.0.0.0   # IP adresa, na které bude webhook poslouchat
-        port: 5000      # Port pro webhook (můžete přizpůsobit podle potřeby)
+        port: 5001      # Port pro webhook (můžete přizpůsobit podle potřeby)
   rules:
     - name: Spusť playbook pro upozornění ze Zabbixu
       condition: >
