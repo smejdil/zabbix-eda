@@ -1,0 +1,20 @@
+---
+- name: Zabbix Webhook Rulebook
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0   # IP adresa, na které bude webhook poslouchat
+        port: 5000      # Port pro webhook (můžete přizpůsobit podle potřeby)
+  rules:
+    - name: Spusť playbook pro upozornění ze Zabbixu
+      condition: >
+        event.body.trigger_status == "PROBLEM" and
+        event.body.severity == "High"
+      action:
+        run_playbook:
+          name: hello.yml   # Název playbooku, který chcete spustit
+          vars:
+            zabbix_event_id: "{{ event.body.event_id }}"
+            zabbix_host: "{{ event.body.host }}"
+            zabbix_description: "{{ event.body.description }}"
+...
