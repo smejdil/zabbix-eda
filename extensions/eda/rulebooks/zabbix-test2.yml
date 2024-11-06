@@ -13,3 +13,5 @@
       action:
         run_playbook:
           name: deploy-apache-prague.yaml
+          inventory: inventory.yaml
+...

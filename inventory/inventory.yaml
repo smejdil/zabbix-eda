@@ -1,0 +1,5 @@
+all:
+  hosts:
+    spos.pfsense.cz:
+      ansible_host: [2a01:a040:2002:8051:5a9c:fcff:fe0e:c7ab]
+...
