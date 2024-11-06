@@ -1,0 +1,25 @@
+- name: Zabbix Alert Monitoring
+  hosts: localhost
+  sources:
+    - ansible.eda.event_source:
+        name: zabbix_alerts
+        type: webhook
+        host: 0.0.0.0
+        port: 5001
+        path: /webhook/zabbix
+  rules:
+    - name: Triggered Alert
+      condition: event.payload['status'] == 'PROBLEM'
+      action:
+        - ansible.builtin.debug:
+            msg: "Received alert: {{ event.payload['message'] }}"
+        - ansible.builtin.shell:
+            cmd: echo "Alert received from Zabbix: {{ event.payload['message'] }}"
+
+    - name: Resolved Alert
+      condition: event.payload['status'] == 'OK'
+      action:
+        - ansible.builtin.debug:
+            msg: "Resolved alert: {{ event.payload['message'] }}"
+        - ansible.builtin.shell:
+            cmd: echo "Alert resolved: {{ event.payload['message'] }}"
