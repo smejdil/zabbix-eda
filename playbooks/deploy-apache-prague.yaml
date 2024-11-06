@@ -1,0 +1,16 @@
+---
+- name: Troubleshoot Apache Web Server
+  hosts: webserver  # Nahraďte vhodným inventářem
+  tasks:
+    - name: Check Apache service status
+      ansible.builtin.service_facts:
+    
+    - name: Restart Apache if not running
+      ansible.builtin.service:
+        name: apache2
+        state: restarted
+      when: ansible_facts.services['apache2'].state != 'running'
+    
+    - name: Notify about Apache status
+      ansible.builtin.debug:
+        msg: "Apache server status: {{ ansible_facts.services['apache2'].state }}"
