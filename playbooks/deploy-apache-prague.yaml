@@ -1,6 +1,6 @@
 ---
 - name: Troubleshoot Apache Web Server
-  hosts: debian-server # Nahraďte vhodným inventářem
+  hosts: debian-server
   tasks:
     - name: Check Apache service status
       ansible.builtin.service_facts:
