@@ -1,0 +1,10 @@
+--- ../../../eda-server/tools/docker/docker-compose-stage.yaml	2024-11-07 16:08:37.199139075 +0100
++++ docker-compose-stage.yaml	2024-11-07 16:07:53.453834961 +0100
+@@ -55,6 +55,7 @@
+       podman system service --time=0 tcp://0.0.0.0:8888
+     ports:
+       - '${EDA_PODMAN_PORT:-8888}:8888'
++      - '5001:5001' # new port for the webhook plugin
+ 
+   postgres:
+     image: ${EDA_POSTGRES_IMAGE:-quay.io/sclorg/postgresql-15-c9s}:${EDA_POSTGRES_VERSION:-latest}
