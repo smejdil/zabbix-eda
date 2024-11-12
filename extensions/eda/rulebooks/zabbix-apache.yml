@@ -14,5 +14,5 @@
         event.payload.event_tags.target is select("==","apache")
       action:
         run_playbook:
-          name: check-apache.yaml
+          name: playbooks/check-apache.yaml
 ...
