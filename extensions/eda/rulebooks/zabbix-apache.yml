@@ -1,0 +1,15 @@
+- name: Zabbix test rulebook
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5001
+  rules:
+    - name: Run playbook for Apache2
+      condition: >-
+        event.payload.host_groups is select("==","Private/LM.NET/Office") and
+        event.payload.event_tags.target is select("==","apache")
+      action:
+        run_playbook:
+          name: check-apache.yaml
+...
