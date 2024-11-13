@@ -6,6 +6,8 @@ Project for test Zabbix vs EDA server and ansible-rulebook
 
 ## Build and run Docker for create webhook
 
+Description in Czech - [Zabbix Events to Event-Driven Ansible (EDA vs ansible-rulebook)](http://blog.smejdil.cz/2024/11/zabbix-events-to-event-driven-ansible.html)
+
 ```console
 docker build -t zabbix-eda-rulebook .
 
