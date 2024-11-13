@@ -1,7 +1,10 @@
 # zabbix-eda
 
-Project for Zabbix vs EDA integration
+Project for test Zabbix vs EDA server and ansible-rulebook
 
+![ansible-rulebook Action](./images/Rulebook-Docker-Action.png)
+
+## Build and run Docker for create webhook
 
 ```console
 docker build -t zabbix-eda-rulebook .
